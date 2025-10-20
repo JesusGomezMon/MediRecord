@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Título Dashboard -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dashboard MediRecord"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Botones de Gestión -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnAgregarMedicamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ Agregar Medicamento"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnAgregarRecordatorio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ Agregar Recordatorio"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnAgregarCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ Agregar Cita Médica"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnVerHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver Historial Completo"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnBuscarOnline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consultar Medicamentos"
+                android:backgroundTint="@color/primary_color"
+                android:layout_marginBottom="8dp" />
+
+        </LinearLayout>
+
+        <!-- Medicamentos para marcar como tomados -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medicamentos de Hoy"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/containerMedicamentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+            <!-- Los medicamentos se agregarán dinámicamente aquí -->
+        </LinearLayout>
+
+        <!-- Información de la BD -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resumen"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvInfo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargando medicamentos..."
+            android:textSize="14sp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F5F5F5" />
+
+        <TextView
+            android:id="@+id/tvInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargando recordatorios..."
+            android:textSize="14sp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F5F5F5" />
+
+        <TextView
+            android:id="@+id/tvInfo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargando historial..."
+            android:textSize="14sp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F5F5F5" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Background Circle -->
+    <path
+        android:pathData="M60,5 C88.27,5 110,26.73 110,55 C110,83.27 88.27,105 60,105 C31.73,105 10,83.27 10,55 C10,26.73 31.73,5 60,5 Z"
+        android:fillColor="#6200EE"/>
+    
+    <!-- Medical Cross -->
+    <path
+        android:pathData="M60,35 L60,75"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"/>
+    
+    <path
+        android:pathData="M40,55 L80,55"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"/>
+    
+    <!-- Rectangle (medical record document) -->
+    <path
+        android:pathData="M35,40 L35,85 C35,87.2 36.8,89 39,89 L81,89 C83.2,89 85,87.2 85,85 L85,40"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+        
+</vector>
