@@ -2,61 +2,78 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buscar Medicamento"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
+            android:background="#E3F2FD"
+            android:padding="16dp"
             android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Consulta información de medicamentos comunes en español"
-            android:textSize="14sp"
+            android:text="Consulta información de medicamentos"
+            android:textSize="18sp"
+            android:textColor="#666666"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="32dp" />
 
         <!-- Campo de búsqueda -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔍 Nombre del medicamento:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
         <EditText
             android:id="@+id/etBuscar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre del medicamento (ej: aspirin)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="text" />
+            android:layout_height="65dp"
+            android:hint="Ej: aspirin, paracetamol"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:inputType="text"
+            android:layout_marginBottom="20dp" />
 
         <!-- Botón buscar -->
         <Button
             android:id="@+id/btnBuscar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Buscar Medicamento"
-            android:backgroundTint="@color/primary_color"
-            android:textColor="@color/white"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="70dp"
+            android:text="🔍 BUSCAR"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="#1976D2"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
 
         <!-- Progress bar -->
         <ProgressBar
             android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
 
         <!-- Sugerencias -->
         <TextView
@@ -64,33 +81,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="12sp"
-            android:textColor="@color/primary_color"
-            android:padding="12dp"
+            android:textSize="18sp"
+            android:textColor="#1976D2"
+            android:padding="16dp"
             android:background="#E3F2FD"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="20dp"
             android:visibility="gone" />
 
         <!-- Resultados -->
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Resultados:"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#E8F5E9"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
             android:id="@+id/tvResultados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cargando información..."
-            android:textSize="14sp"
-            android:padding="16dp"
+            android:text="Ingresa el nombre de un medicamento y presiona buscar"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.4"
+            android:padding="20dp"
             android:background="#F5F5F5"
             android:textIsSelectable="true"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
 
         <!-- Información adicional -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Base de datos local - No requiere Internet"
-            android:textSize="12sp"
+            android:text="ℹ️ Base de datos local\nNo requiere Internet"
+            android:textSize="16sp"
             android:gravity="center"
             android:textColor="#666666"
+            android:lineSpacingMultiplier="1.3"
+            android:padding="16dp"
+            android:background="#FFF9C4"
             android:layout_marginTop="8dp" />
 
     </LinearLayout>

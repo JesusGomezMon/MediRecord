@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🗺️ Farmacias Cercanas"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:background="#E3F2FD"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Icono -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏥"
+            android:textSize="80sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Instrucciones -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Encuentra farmacias cerca de ti"
+            android:textSize="22sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Opción 1: Buscar con ubicación -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📍 Buscar cerca de mí:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnBuscarUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="📍 BUSCAR CERCA DE MÍ"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginBottom="32dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usará tu ubicación actual para encontrar las farmacias más cercanas"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#E8F5E9"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Opción 2: Buscar general -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔍 Búsqueda general:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnBuscarFarmacias"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="🔍 BUSCAR FARMACIAS"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1976D2"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Abrirá Google Maps para que busques farmacias manualmente"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#E3F2FD"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Nota informativa -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ℹ️ Esta función abre Google Maps en tu dispositivo"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="#FFF9C4"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>
+

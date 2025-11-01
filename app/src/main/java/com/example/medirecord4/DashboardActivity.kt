@@ -1,13 +1,20 @@
 package com.example.medirecord4
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.Gravity
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -16,7 +23,13 @@ import java.util.UUID
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DatabaseHelper
+    private lateinit var notificationHelper: NotificationHelper
     private val usuarioActual = "usr-001" // Usuario de ejemplo
+    private var isSensorServiceRunning = false
+    
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 1000
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +39,12 @@ class DashboardActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Dashboard"
 
-        // Inicializar base de datos
+        // Inicializar base de datos y helpers
         dbHelper = DatabaseHelper(this)
+        notificationHelper = NotificationHelper(this)
+
+        // Solicitar permisos necesarios
+        requestNecessaryPermissions()
 
         // Configurar botones
         setupButtons()
@@ -78,6 +95,117 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, BuscarMedicamentoOnlineActivity::class.java)
             startActivity(intent)
         }
+        
+        // Nuevo botón: Ver farmacias cercanas
+        findViewById<Button>(R.id.btnVerFarmacias).setOnClickListener {
+            // Usar versión externa (no requiere API Key)
+            val intent = Intent(this, FarmaciasMapaExternoActivity::class.java)
+            startActivity(intent)
+        }
+        
+        // Nuevo botón: Activar/Desactivar servicio de sensores
+        findViewById<Button>(R.id.btnActivarSensores).setOnClickListener {
+            toggleSensorService()
+        }
+    }
+    
+    /**
+     * Solicita todos los permisos necesarios para las funcionalidades
+     */
+    private fun requestNecessaryPermissions() {
+        val permissionsToRequest = mutableListOf<String>()
+        
+        // Permisos de ubicación
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) 
+            != PackageManager.PERMISSION_GRANTED) {
+            permissionsToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
+            permissionsToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
+        
+        // Permisos de notificaciones (Android 13+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) 
+                != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+        
+        // Permisos de reconocimiento de actividad
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) 
+                != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequest.add(Manifest.permission.ACTIVITY_RECOGNITION)
+            }
+        }
+        
+        if (permissionsToRequest.isNotEmpty()) {
+            ActivityCompat.requestPermissions(
+                this,
+                permissionsToRequest.toTypedArray(),
+                PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+    
+    /**
+     * Activa o desactiva el servicio de monitoreo de sensores
+     */
+    private fun toggleSensorService() {
+        val button = findViewById<Button>(R.id.btnActivarSensores)
+        
+        if (isSensorServiceRunning) {
+            // Detener servicio
+            val intent = Intent(this, SensorMonitorService::class.java)
+            stopService(intent)
+            isSensorServiceRunning = false
+            button.text = "🛡️ Activar Protección"
+            button.backgroundTintList = ContextCompat.getColorStateList(this, 
+                android.R.color.holo_red_dark)
+            Toast.makeText(this, "Protección desactivada", Toast.LENGTH_SHORT).show()
+        } else {
+            // Iniciar servicio
+            val intent = Intent(this, SensorMonitorService::class.java)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(intent)
+            } else {
+                startService(intent)
+            }
+            isSensorServiceRunning = true
+            button.text = "✓ Protección Activa"
+            button.backgroundTintList = ContextCompat.getColorStateList(this, 
+                android.R.color.holo_green_dark)
+            Toast.makeText(this, 
+                "Protección activada:\n• Detección de caídas\n• Monitor de actividad\n• Confirmación por gestos", 
+                Toast.LENGTH_LONG).show()
+        }
+    }
+    
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val deniedPermissions = mutableListOf<String>()
+            
+            for (i in permissions.indices) {
+                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                    deniedPermissions.add(permissions[i])
+                }
+            }
+            
+            if (deniedPermissions.isNotEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Algunos permisos fueron denegados. Algunas funciones pueden no estar disponibles.",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(this, "Permisos concedidos", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun mostrarMedicamentosParaTomar() {
@@ -87,43 +215,101 @@ class DashboardActivity : AppCompatActivity() {
         val recordatorios = dbHelper.obtenerRecordatoriosHoy()
 
         if (recordatorios.isEmpty()) {
-            val tvVacio = TextView(this)
-            tvVacio.text = "No hay medicamentos programados para hoy"
-            tvVacio.setPadding(16, 16, 16, 16)
+            val tvVacio = TextView(this).apply {
+                text = "✓ No hay medicamentos programados para hoy"
+                textSize = 20f
+                setTextColor(0xFF666666.toInt())
+                setPadding(20, 20, 20, 20)
+                gravity = Gravity.CENTER
+            }
             container.addView(tvVacio)
         } else {
             recordatorios.forEach { rec ->
-                // Crear un LinearLayout horizontal para cada medicamento
+                // Crear un LinearLayout VERTICAL para cada medicamento
+                // MEJORADO PARA ADULTOS MAYORES: Todo el texto visible y botones grandes
                 val itemLayout = LinearLayout(this).apply {
-                    orientation = LinearLayout.HORIZONTAL
-                    setPadding(16, 8, 16, 8)
+                    orientation = LinearLayout.VERTICAL // Cambiado a VERTICAL
+                    setPadding(20, 16, 20, 16)
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+                    setBackgroundColor(0xFFFFF9C4.toInt()) // Fondo amarillo claro
+                }
+
+                // Texto del nombre del medicamento - MÁS GRANDE Y LEGIBLE
+                val tvNombre = TextView(this).apply {
+                    text = "💊 ${rec["medicamento"]}"
+                    textSize = 22f // Nombre del medicamento grande
+                    setTextColor(0xFF000000.toInt()) // Negro para alto contraste
+                    setTypeface(null, android.graphics.Typeface.BOLD)
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+                }
+                
+                // Texto de la dosis - VISIBLE Y CLARO
+                val tvDosis = TextView(this).apply {
+                    text = "Dosis: ${rec["dosis"]}"
+                    textSize = 20f
+                    setTextColor(0xFF000000.toInt())
+                    setPadding(0, 8, 0, 0)
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+                }
+                
+                // Texto del horario - GRANDE Y DESTACADO
+                val tvHora = TextView(this).apply {
+                    text = "⏰ Hora: ${rec["hora"]}"
+                    textSize = 20f
+                    setTextColor(0xFF1976D2.toInt()) // Azul para destacar la hora
+                    setTypeface(null, android.graphics.Typeface.BOLD)
+                    setPadding(0, 8, 0, 16)
                     layoutParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     )
                 }
 
-                // Texto del medicamento
-                val tvMedicamento = TextView(this).apply {
-                    text = "${rec["medicamento"]} - ${rec["dosis"]} a las ${rec["hora"]}"
-                    textSize = 16f
-                    layoutParams = LinearLayout.LayoutParams(
-                        0,
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        1f
-                    )
-                }
-
-                // Botón para marcar como tomado
+                // Botón para marcar como tomado - ANCHO COMPLETO Y GRANDE
                 val btnTomado = Button(this).apply {
-                    text = "Tomado"
+                    text = "✓ MARCAR COMO TOMADO"
+                    textSize = 18f
+                    setTextColor(0xFFFFFFFF.toInt())
+                    backgroundTintList = ContextCompat.getColorStateList(
+                        this@DashboardActivity, 
+                        android.R.color.holo_green_dark
+                    )
+                    // Botón grande con ancho completo
+                    minimumHeight = TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 65f, resources.displayMetrics
+                    ).toInt()
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
                     setOnClickListener {
                         marcarComoTomado(rec["id"] ?: "", rec["medicamento"] ?: "")
                     }
                 }
 
-                itemLayout.addView(tvMedicamento)
+                // Agregar todos los elementos en orden
+                itemLayout.addView(tvNombre)
+                itemLayout.addView(tvDosis)
+                itemLayout.addView(tvHora)
                 itemLayout.addView(btnTomado)
+                
+                // Añadir margen entre items
+                val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                params.bottomMargin = 16 // Mayor margen entre medicamentos
+                itemLayout.layoutParams = params
+                
                 container.addView(itemLayout)
             }
         }
@@ -174,6 +360,9 @@ class DashboardActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "$nombreMedicamento marcado como tomado", Toast.LENGTH_SHORT).show()
         }
+        
+        // Mostrar notificación de confirmación
+        notificationHelper.showConfirmationNotification(nombreMedicamento)
         
         // Actualizar la vista
         mostrarInformacionDB()

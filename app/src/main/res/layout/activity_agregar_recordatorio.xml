@@ -1,75 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar Recordatorio"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="32dp" />
+            android:background="#E3F2FD"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Medicamento -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medicamento:"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
+            android:text="💊 Medicamento:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <Spinner
             android:id="@+id/spinnerMedicamento"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
-
-        <EditText
-            android:id="@+id/etHora"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hora (ej: 08:00:00)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
-
-        <EditText
-            android:id="@+id/etDias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Días (ej: LUNES,MARTES,MIERCOLES)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
-
-        <EditText
-            android:id="@+id/etFechaInicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fecha inicio (ej: 2024-01-20)"
+            android:layout_height="60dp"
+            android:background="#F5F5F5"
             android:padding="16dp"
             android:layout_marginBottom="24dp" />
 
+        <!-- Hora -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⏰ Hora del medicamento:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Días de la semana -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📅 Selecciona los días:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFF9C4"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <CheckBox
+                android:id="@+id/cbLunes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lunes"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbMartes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Martes"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbMiercoles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Miércoles"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbJueves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jueves"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbViernes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Viernes"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbSabado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sábado"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbDomingo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Domingo"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <!-- Botón para seleccionar todos los días -->
+            <Button
+                android:id="@+id/btnTodosLosDias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✓ Todos los días"
+                android:textSize="18sp"
+                android:backgroundTint="#4CAF50"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <!-- Fecha de inicio -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📆 Fecha de inicio:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSeleccionarFecha"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Seleccionar Fecha"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF9800"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvFechaSeleccionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ninguna fecha seleccionada"
+            android:textSize="18sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Botones de acción -->
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar Recordatorio"
-            android:backgroundTint="@color/primary_color"
-            android:layout_marginBottom="8dp" />
+            android:layout_height="70dp"
+            android:text="💾 GUARDAR RECORDATORIO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1976D2"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:layout_height="70dp"
+            android:text="❌ CANCELAR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:backgroundTint="#757575" />
 
     </LinearLayout>
 

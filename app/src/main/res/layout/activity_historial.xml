@@ -1,65 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Historial Completo"
-            android:textSize="28sp"
+            android:text="📊 Historial Completo"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="32dp" />
+            android:background="#E3F2FD"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Historial de tomas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💊 Historial de Tomas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#FFF9C4"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvHistorialTomas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando historial..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.3"
             android:padding="16dp"
             android:background="#F5F5F5"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- Citas médicas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏥 Citas Médicas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#E8F5E9"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvCitasMedicas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando citas..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.3"
             android:padding="16dp"
             android:background="#F5F5F5"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- Estadísticas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📈 Estadísticas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#FFE0B2"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvEstadisticas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando estadísticas..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.3"
             android:padding="16dp"
             android:background="#F5F5F5"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- Medicamentos y stock -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📦 Estado de Stock"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#E1BEE7"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvMedicamentosStock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando información..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.3"
             android:padding="16dp"
-            android:background="#E8F5E9"
+            android:background="#F5F5F5"
             android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 
 </ScrollView>
-

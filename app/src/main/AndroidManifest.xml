@@ -5,6 +5,23 @@
     <!-- Permisos para Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Permisos para ubicación (Google Maps) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- Permisos para notificaciones -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- Permisos para detección de actividad y sensores -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    
+    <!-- Características de hardware (opcionales) -->
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -44,6 +61,26 @@
         <activity
             android:name=".BuscarMedicamentoOnlineActivity"
             android:exported="false" />
+        
+        <activity
+            android:name=".FarmaciasMapaExternoActivity"
+            android:exported="false" />
+        
+        <!-- Servicio de detección de sensores para caídas -->
+        <service
+            android:name=".SensorMonitorService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="health" />
+        
+        <!-- Receiver para Firebase Cloud Messaging -->
+        <service
+            android:name=".FCMService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 

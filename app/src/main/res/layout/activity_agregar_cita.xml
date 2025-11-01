@@ -1,80 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar Cita Médica"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="32dp" />
+            android:background="#E3F2FD"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Nombre del doctor -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👨‍⚕️ Nombre del doctor:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etDoctorNombre"
             android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Ej: Dr. Juan Pérez"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Especialidad -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del doctor"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="🩺 Especialidad:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etEspecialidad"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Especialidad"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="65dp"
+            android:hint="Ej: Cardiólogo, Pediatra"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
 
-        <EditText
-            android:id="@+id/etFechaHora"
+        <!-- Fecha -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha y hora (ej: 2024-02-15 10:00:00)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="📅 Fecha de la cita:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSeleccionarFecha"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Seleccionar Fecha"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF9800"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvFechaSeleccionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ninguna fecha seleccionada"
+            android:textSize="18sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Hora -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⏰ Hora de la cita:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSeleccionarHora"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Seleccionar Hora"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF9800"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvHoraSeleccionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ninguna hora seleccionada"
+            android:textSize="18sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Ubicación -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📍 Ubicación:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etUbicacion"
             android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Ej: Hospital General, Consultorio 205"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Notas -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ubicación"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="📝 Notas adicionales:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etNotas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Notas adicionales"
-            android:padding="16dp"
+            android:layout_height="100dp"
+            android:hint="Motivo de la consulta, preparación necesaria, etc."
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:gravity="top"
             android:minLines="3"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="32dp" />
 
+        <!-- Botones de acción -->
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar Cita"
-            android:backgroundTint="@color/primary_color"
-            android:layout_marginBottom="8dp" />
+            android:layout_height="70dp"
+            android:text="💾 GUARDAR CITA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1976D2"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:layout_height="70dp"
+            android:text="❌ CANCELAR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:backgroundTint="#757575" />
 
     </LinearLayout>
 
 </ScrollView>
-

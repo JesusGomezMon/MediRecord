@@ -1,104 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar Medicamento"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="32dp" />
+            android:background="#E3F2FD"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Nombre del medicamento -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💊 Nombre del medicamento:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Ej: Paracetamol"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Dosis -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del medicamento"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="📏 Dosis:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etDosis"
             android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Ej: 500mg"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Tipo -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Dosis (ej: 500mg)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="💊 Tipo:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etTipo"
             android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:hint="Ej: Tableta, Cápsula, Jarabe"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Instrucciones -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tipo (tableta, capsula, etc.)"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="📝 Instrucciones:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etInstrucciones"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Ej: Tomar con alimentos"
+            android:textSize="20sp"
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:gravity="top"
+            android:minLines="3"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Stock -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Instrucciones"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:text="📦 Cantidad en stock:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etStock"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Stock total"
+            android:layout_height="65dp"
+            android:hint="Ej: 30"
+            android:textSize="20sp"
             android:inputType="number"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Tipo de tratamiento -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo de tratamiento:"
-            android:textSize="16sp"
+            android:text="⏱️ Tipo de tratamiento:"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:textColor="#000000"
+            android:layout_marginBottom="12dp" />
 
         <Spinner
             android:id="@+id/spinnerTipoTratamiento"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:background="#F5F5F5"
             android:padding="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- Duración del tratamiento -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📅 Duración (días):"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Solo para tratamientos temporales"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="12dp" />
 
         <EditText
             android:id="@+id/etDuracionDias"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Duración del tratamiento (días) - Solo para temporal"
+            android:layout_height="65dp"
+            android:hint="Ej: 7"
+            android:textSize="20sp"
             android:inputType="number"
-            android:padding="16dp"
-            android:layout_marginBottom="24dp" />
+            android:padding="20dp"
+            android:background="#F5F5F5"
+            android:layout_marginBottom="32dp" />
 
+        <!-- Botones de acción -->
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar Medicamento"
-            android:backgroundTint="@color/primary_color"
-            android:layout_marginBottom="8dp" />
+            android:layout_height="70dp"
+            android:text="💾 GUARDAR MEDICAMENTO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1976D2"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:layout_height="70dp"
+            android:text="❌ CANCELAR"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:backgroundTint="#757575" />
 
     </LinearLayout>
 
 </ScrollView>
-

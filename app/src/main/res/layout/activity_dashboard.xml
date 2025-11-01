@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
-        <!-- Título Dashboard -->
+        <!-- Título Dashboard - Texto más grande y alto contraste -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dashboard MediRecord"
-            android:textSize="28sp"
+            android:text="MediRecord"
+            android:textSize="36sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color"
+            android:textColor="#000000"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:background="#E3F2FD" />
 
-        <!-- Botones de Gestión -->
+        <!-- Botones de Gestión - Más grandes y fáciles de tocar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,42 +33,81 @@
             <Button
                 android:id="@+id/btnAgregarMedicamento"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+ Agregar Medicamento"
-                android:backgroundTint="@color/primary_color"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="70dp"
+                android:text="➕ Agregar Medicamento"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
 
             <Button
                 android:id="@+id/btnAgregarRecordatorio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+ Agregar Recordatorio"
-                android:backgroundTint="@color/primary_color"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="70dp"
+                android:text="🔔 Agregar Recordatorio"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
 
             <Button
                 android:id="@+id/btnAgregarCita"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+ Agregar Cita Médica"
-                android:backgroundTint="@color/primary_color"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="70dp"
+                android:text="📅 Agregar Cita"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
 
             <Button
                 android:id="@+id/btnVerHistorial"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ver Historial Completo"
-                android:backgroundTint="@color/primary_color"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="70dp"
+                android:text="📋 Ver Historial"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#388E3C"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
 
             <Button
                 android:id="@+id/btnBuscarOnline"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Consultar Medicamentos"
-                android:backgroundTint="@color/primary_color"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="70dp"
+                android:text="🔍 Consultar"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#388E3C"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
+
+            <!-- NUEVOS BOTONES PARA FUNCIONALIDADES -->
+            
+            <Button
+                android:id="@+id/btnVerFarmacias"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="🗺️ Farmacias Cercanas"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#F57C00"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnActivarSensores"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="🛡️ Activar Protección"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="#D32F2F"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp" />
 
         </LinearLayout>
 
@@ -73,9 +115,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medicamentos de Hoy"
-            android:textSize="20sp"
+            android:text="💊 Medicamentos de Hoy"
+            android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#FFF9C4"
+            android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
         <LinearLayout
@@ -91,9 +136,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Resumen"
-            android:textSize="20sp"
+            android:text="📊 Resumen"
+            android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#E8F5E9"
+            android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
         <TextView
@@ -101,30 +149,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando medicamentos..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
-            android:background="#F5F5F5" />
+            android:background="#F5F5F5"
+            android:lineSpacingMultiplier="1.3" />
 
         <TextView
             android:id="@+id/tvInfo2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando recordatorios..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
-            android:background="#F5F5F5" />
+            android:background="#F5F5F5"
+            android:lineSpacingMultiplier="1.3" />
 
         <TextView
             android:id="@+id/tvInfo3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cargando historial..."
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textColor="#000000"
             android:padding="16dp"
             android:layout_marginBottom="16dp"
-            android:background="#F5F5F5" />
+            android:background="#F5F5F5"
+            android:lineSpacingMultiplier="1.3" />
 
     </LinearLayout>
 
